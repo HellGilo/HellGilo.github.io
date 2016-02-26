@@ -25,20 +25,10 @@ $(function() {
                 type: "POST",
                 dataType: "json",
                 data: {
-                    'message': {
-                        'from_email': email,
-                        'to': [
-                            {
-                                'email': 'daniele.gili@icloud.com',
-                                'name': 'noreply@yourdomain.com',
-                                'type': 'to'
-                            }
-                        ],
-                        'autotext': 'true',
-                        'subject': "Website Contact Form: " + name,
-                        'html': "You have received a new message from your website contact form.\n\n" + "Here are the details:\n\nName: "+name+"\n\nEmail: "+email+"\n\nPhone: "+phone+"\n\nMessage:\n" + message
-                    }
-                },
+                    _subject: "Website Contact Form: " + name,
+                    _replyto: 'noreply@yourdomain.com',
+                    'message': "You have received a new message from your website contact form.\n\n" + "Here are the details:\n\nName: "+name+"\n\nEmail: "+email+"\n\nPhone: "+phone+"\n\nMessage:\n" + message
+                    },
                 cache: false,
                 success: function() {
                     // Enable button & show success message
@@ -47,7 +37,7 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>Your message has been sent2. </strong>");
                     $('#success > .alert-success')
                         .append('</div>');
 

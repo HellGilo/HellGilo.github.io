@@ -21,8 +21,9 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "http://formspree.io/daniele.gili@icloud.com",
+                url: "//formspree.io/daniele.gili@icloud.com",
                 type: "POST",
+                dataType: "json",
                 data: {
                     'message': {
                         'from_email': email,

@@ -21,13 +21,22 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "http://formspree.io/daniele.gili@icloud.com",
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
+                    'message': {
+                        'from_email': email,
+                        'to': [
+                            {
+                                'email': 'daniele.gili@icloud.com',
+                                'name': 'noreply@yourdomain.com',
+                                'type': 'to'
+                            }
+                        ],
+                        'autotext': 'true',
+                        'subject': "Website Contact Form: " + name,
+                        'html': "You have received a new message from your website contact form.\n\n" + "Here are the details:\n\nName: "+name+"\n\nEmail: "+email+"\n\nPhone: "+phone+"\n\nMessage:\n" + message
+                    }
                 },
                 cache: false,
                 success: function() {

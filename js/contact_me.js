@@ -21,16 +21,17 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "//formspree.io/daniele.gili@icloud.com",
                 type: "POST",
+                dataType: "json",
                 data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
+                    _subject: "Website Contact Form: " + name,
+                    _replyto: 'noreply@yourdomain.com',
+                    'message': "You have received a new message from your website contact form.\n\n" + "Here are the details:\n\nName: "+name+"\n\nEmail: "+email+"\n\nPhone: "+phone+"\n\nMessage:\n" + message
+                    },
                 cache: false,
-                success: function() {
+                success: function(e) {
+                    console.log(e);
                     // Enable button & show success message
                     $("#btnSubmit").attr("disabled", false);
                     $('#success').html("<div class='alert alert-success'>");
@@ -44,7 +45,8 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function() {
+                error: function(e) {
+                    console.log(e);
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")

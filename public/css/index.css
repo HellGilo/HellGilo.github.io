@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+
+    .navigator{
+    flex:0.1;
+    background-color: blue;
+    }
+    .content {
+    flex: 0.9;
+    background-color: red;
+}
+
+}
